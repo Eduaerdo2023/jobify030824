@@ -38,6 +38,7 @@ export const validateIdParams = withValidationErrors([
     }),
 ])
 
+
 export const validateRegisterInput = withValidationErrors([
   body('name').notEmpty().withMessage('company is required'),
   body('email').notEmpty().withMessage('email is required').isEmail().withMessage('invalid email format').custom(async(email)=> {
@@ -48,5 +49,9 @@ export const validateRegisterInput = withValidationErrors([
   }),
   body('password').notEmpty().withMessage('password is required').isLength({min: 5, max:20}).withMessage('password must between  6 and 19 characters '),
   body('lastName').notEmpty().withMessage('last name  is required'),
-  
+])
+
+export const validateLoginInput = withValidationErrors([
+  body('email').notEmpty().withMessage('email is required').isEmail().withMessage('invalid email format'),
+  body('password').notEmpty().withMessage('password is required'),
 ])
