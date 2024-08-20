@@ -1,10 +1,13 @@
+import { Form } from "react-router-dom"
+import { FormRow } from "../components"
+
 
 
 const AddJob = () => {
   return (
-    <div>
+    <Form>
       <h1>add job</h1>
-    </div>
+    </Form>
   )
 }
 

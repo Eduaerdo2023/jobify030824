@@ -1,11 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { AllJobs, AddJob, Stats,  Profile, DashboardLayout, HomeLayout, Landing, Login, Register, Error, Admin } from "./pages"
 
+import {action as registerAction} from './pages/Register'
+import {action as loginAction} from './pages/Login'
+import {loader as dashboardLoader} from './pages/DashboardLayout'
+
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem('darkTheme') === 'true'
   document.body.classList.toggle('dark-theme')
   return isDarkTheme
 }
+
 checkDefaultTheme()
 
 
@@ -21,11 +26,13 @@ const router = createBrowserRouter([
       },
       {
         path: 'register',
-        element: <Register />
+        element: <Register />,
+        action: registerAction
       },
       {
         path: 'login',
-        element: <Login />
+        element: <Login />,
+        action: loginAction
       },
     ]
   },
@@ -33,6 +40,7 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <DashboardLayout />,
+    loader: dashboardLoader,
     children: [
       {
         index: 'add-job',

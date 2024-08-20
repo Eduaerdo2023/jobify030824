@@ -5,7 +5,7 @@ const HomeLayout = () => {
   return (
     <>
       <Outlet />
-      <Admin />
+     
     </>
   )
 }
